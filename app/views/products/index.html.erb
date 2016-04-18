@@ -1,7 +1,25 @@
-<table>
+<!-- <table>
 <% @products.each do |product| %>
 <tr>
 <td><a href="/products/<%= product.id %>"><%= product.name %></a></td>
 </tr>
 <% end %>
-</table>
+</table> -->
+<h1>Products</h1>
+
+<div class="row">
+  <% @products.each do |product| %>
+  <div class="col-md-3">
+    <div class="thumbnail">
+      <a href="/products/<%= product.id %>">
+        <p><%= product.name %></p>
+        <p><%= product.price %></p>
+        <p><%= product.description %></p>
+        <div>
+          <img src="<%= product.image %>" width="200" height="200">
+        </div>
+      </a>
+    </div>
+  </div>
+  <% end %>
+</div>
