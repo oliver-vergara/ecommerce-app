@@ -1,7 +1,12 @@
+<h3><%= @product.sale_message %></h3>
 <ul>
-  <li><%= @product.name %></li>
-  <li><%= @product.price %></li>
+  <li>Item <%= @product.name %></li>
   <li><%= @product.description %></li>
+  <li>Price $<%= @product.price %></li> 
+  <li>Tax $<%= @product.tax %></li>
+  <li>Total Price $<%= @product.total %></li>
 </ul>
+
+  
 
 <%= link_to "Delete", "/products/#{@product.id}", method: :delete %>
