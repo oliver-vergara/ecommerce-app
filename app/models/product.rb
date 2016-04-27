@@ -1,5 +1,8 @@
 class Product < ActiveRecord::Base
+  belongs_to :supplier
+  has_many :images
 
+  
 DISCOUNT_THRESHOLD = 10
 SALES_TAX = 0.09
   def sale_message
@@ -16,6 +19,8 @@ SALES_TAX = 0.09
 
   def total
     price + tax
-    #"#{tax} + #{price}"
   end
+
+  
+
 end

@@ -7,6 +7,9 @@
 </table> -->
 <h1>Products</h1>
 
+<a href="/products?sort=low_price">Sort by Lowest Price</a>
+<a href="/products?sort=high_price">Sort by Highest Price</a>
+
 <div class="row">
   <% @products.each do |product| %>
   <div class="col-md-3">
@@ -14,9 +17,10 @@
       <a href="/products/<%= product.id %>">
         <p><%= product.name %></p>
         <p><%= product.price %></p>
+        <p><%= product.stock %></p>
         <p><%= product.description %></p>
         <div>
-          <img src="<%= product.image %>" width="200" height="200">
+          <img src="<%= product.images.first.image_url %>" width="200" height="200">
         </div>
       </a>
     </div>

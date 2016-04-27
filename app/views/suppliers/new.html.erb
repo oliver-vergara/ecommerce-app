@@ -1,4 +1,4 @@
-<h1>Add a New Product!</h1>
+  <h1>Add a Supplier!</h1>
 
 <%= form_tag '/products', method: :post do %>
 
@@ -27,10 +27,8 @@
     <%= text_field_tag :description %>
   </div>
 
-  <div>
-    <%= collection_select :supplier, :supplier_id, Supplier.all, :id, :name %>
-  </div>
 
-  <%= submit_tag 'Add Product' %>
+
+  <%= submit_tag 'Add Supplier' %>
 
 <% end %>

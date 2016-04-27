@@ -1,12 +1,21 @@
 <h3><%= @product.sale_message %></h3>
 <ul>
-  <li>Item <%= @product.name %></li>
+  <li>Item: <%= @product.name %></li>
+  <% @product.images.each do |image| %>
+              <img src="<%= image.image_url %>" class="img-responsive">
+            <% end %>
+  <li>Price: $<%= @product.price %></li> 
+  <li>Tax: $<%= @product.tax %></li>
+  <li>Total Price: $<%= @product.total %></li>
+  <li>Stock: <%= @product.stock %></li>
   <li><%= @product.description %></li>
-  <li>Price $<%= @product.price %></li> 
-  <li>Tax $<%= @product.tax %></li>
-  <li>Total Price $<%= @product.total %></li>
+  <li>Supplier: <%= @product.supplier.name %></li>
+  <div>
+     
+  </div>
+    
 </ul>
 
   
-
-<%= link_to "Delete", "/products/#{@product.id}", method: :delete %>
+<p><%= link_to "Edit", "/products/#{@product.id}/edit", method: :get %></p>
+<p><%= link_to "Delete", "/products/#{@product.id}", method: :delete %></p>
