@@ -10,9 +10,18 @@
   <li>Stock: <%= @product.stock %></li>
   <li><%= @product.description %></li>
   <li>Supplier: <%= @product.supplier.name %></li>
+
+<%= form_tag '/orders', method: :post do %>
   <div>
-     
+    <%= label_tag :quantity %>
+    <%= text_field_tag :quantity %>
   </div>
+  <div>
+    <%= label_tag :product_id %>
+    <%= text_field_tag :product_id %>
+  </div>
+  <%= submit_tag 'Buy Now' %>
+<% end %>
     
 </ul>
 
