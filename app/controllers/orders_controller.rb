@@ -18,9 +18,14 @@ class OrdersController < ApplicationController
 
   def show
     @new_order = Order.find_by(id: params[:id])
+    @product_name = @new_order.product.name
     @subtotal = @new_order.subtotal
     @tax = @new_order.tax
     @total = @new_order.total
+    @email = @new_order.user.email
+    @image_1 = @new_order.product.images.first.image_url
+    @order_date = @new_order.created_at
+    
     
   end
 end
