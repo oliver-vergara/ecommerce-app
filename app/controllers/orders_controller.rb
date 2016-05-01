@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @new_order = Order.find_by(id: params[:id])
+    @new_order = current_user.orders.find_by(id: params[:id])
     @product_name = @new_order.product.name
     @subtotal = @new_order.subtotal
     @tax = @new_order.tax
