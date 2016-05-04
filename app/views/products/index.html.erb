@@ -10,6 +10,12 @@
 <a href="/products?sort=low_price">Sort by Lowest Price</a>
 <a href="/products?sort=high_price">Sort by Highest Price</a>
 
+<ul>
+  <% Category.all.each do |category| %>
+    <li><%= link_to category.name, "/products?category=#{category.name}" %></li>
+  <% end %>
+</ul>
+
 <div class="row">
   <% @products.each do |product| %>
   <div class="col-md-3">

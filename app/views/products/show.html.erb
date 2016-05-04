@@ -4,6 +4,11 @@
   <% @product.images.each do |image| %>
               <img src="<%= image.image_url %>" class="img-responsive">
             <% end %>
+  <ul>
+    <% @product.categories.each do |category| %>
+      <li><%= category.name %></li>
+    <% end %>
+  </ul>
   <li>Price: $<%= @product.price %></li> 
   <li>Tax: $<%= @product.tax %></li>
   <li>Total Price: $<%= @product.total %></li>
@@ -11,16 +16,13 @@
   <li><%= @product.description %></li>
   <li>Supplier: <%= @product.supplier.name %></li>
 
-<%= form_tag '/orders', method: :post do %>
+<%= form_tag '/carted_products', method: :post do %>
   <div>
     <%= label_tag :quantity %>
     <%= text_field_tag :quantity %>
   </div>
-  <div>
-    <%= label_tag :product_id %>
-    <%= text_field_tag :product_id %>
-  </div>
-  <%= submit_tag 'Buy Now' %>
+  <%= hidden_field_tag :product_id, @product.id %>
+  <%= submit_tag 'Add to Cart' %>
 <% end %>
     
 </ul>

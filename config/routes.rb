@@ -1,21 +1,29 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users
+devise_for :users
 root 'products#index'
-get 'products', to: 'products#index'
-get 'products/new', to: 'products#new'
-post 'products/', to: 'products#create'
-get 'products/:id', to: 'products#show'
-get 'products/:id/edit', to: 'products#edit'
-patch 'products/:id', to: 'products#update'
-delete 'products/:id', to: 'products#destroy'
+get '/products', to: 'products#index'
+get '/products/new', to: 'products#new'
+post '/products/', to: 'products#create'
+get '/products/:id', to: 'products#show'
+get '/products/:id/edit', to: 'products#edit'
+patch '/products/:id', to: 'products#update'
+delete '/products/:id', to: 'products#destroy'
 
 post '/search', to: 'products#search'
 get '/suppliers', to: 'suppliers#index'
 
 post '/orders', to: 'orders#create'
 get '/orders/:id', to: 'orders#show'
+delete "/carted_products/:id", to: 'carted_products#destroy'
+
+post '/carted_products', to: 'carted_products#create'
+get '/carted_products', to: 'carted_products#index'
+patch '/orders/:id', to: 'orders#update'
+
+
+
 
 
 
