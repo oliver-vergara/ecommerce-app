@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   
+  before_action :authenticate_admin!, except: [:index, :show, :search]
+
 
   def index
     if params[:sort] == "low_price"
@@ -25,13 +27,18 @@ class ProductsController < ApplicationController
 
   def new
 
+    @product = Product.new
+
   end
 
   def create
-    new_product = Product.new(name: params[:name], price: params[:price], description: params[:description], stock: params[:stock], supplier_id: params[:supplier][:supplier_id])
-    new_product.save
-    flash[:success] = "Product Added"
-    redirect_to "/products/#{new_product.id}"
+    @product = Product.new(name: params[:name], price: params[:price], description: params[:description], stock: params[:stock], supplier_id: params[:supplier][:supplier_id])
+    if @product.save
+      flash[:success] = "Product Added"
+      redirect_to "/products/#{@product.id}"
+    else
+      render :new
+    end
   end
 
   def edit

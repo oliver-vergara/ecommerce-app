@@ -1,5 +1,7 @@
 class CartedProductsController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index]
+
   def create
     if current_user.orders.find_by(completed: false) 
       order = Order.find_by(completed: false)

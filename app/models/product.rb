@@ -6,6 +6,10 @@ class Product < ActiveRecord::Base
   has_many :carted_products
   has_many :orders, through: :carted_products
 
+  validates :name, :description, presence: true
+  validates :price, presence: true, numericality: true
+  validates :name, uniqueness: true
+
   
 DISCOUNT_THRESHOLD = 10
 SALES_TAX = 0.09
