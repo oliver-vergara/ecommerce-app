@@ -14,7 +14,7 @@ class CartedProductsController < ApplicationController
 
     carted_product = CartedProduct.new(order_id: order.id, product_id: params[:product_id], quantity: params[:quantity])
     carted_product.save
-
+    session[:cart_count] = nil
     redirect_to "/carted_products"   
   end
 
@@ -28,7 +28,7 @@ class CartedProductsController < ApplicationController
 
   def destroy
     CartedProduct.find_by(id: params[:id]).destroy
-    
+    session[:cart_count] = nil
     redirect_to "/carted_products"
   end
 end

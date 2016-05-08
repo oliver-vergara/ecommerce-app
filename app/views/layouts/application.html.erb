@@ -52,6 +52,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li><%= link_to "Sign Out", "/users/sign_out", method: :delete %></li>
+          <li><%= link_to "Items #{@cart_count}", "/carted_products" %></li>
         <% else %>
           <li><%= link_to "Sign Up", "/users/sign_up" %></li>
           <li><%= link_to "Sign In", "/users/sign_in" %></li>
